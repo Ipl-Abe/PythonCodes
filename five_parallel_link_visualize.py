@@ -6,12 +6,13 @@ from sympy import *
 from sympy.abc import *
 import matplotlib.animation as animation
 from time import *
+import math
 
 def radtoDeg(x):
-    return x * pi / 180
+    return x * math.pi / 180
 
 def degtoRad(x):
-    return x * 180 / pi
+    return x * 180 / math.pi
 
 def norm2(x):
     return x[0]*x[0]+x[1]*x[1]+x[2]*x[2]
@@ -94,6 +95,23 @@ def symbol_calc():
 
     return 1
 
+# input two lengle of triangle
+# output angles between two lines
+def cos_formula(B,C,A):
+    sqt = math.sqrt(B**2 + C**2)
+    aa = np.array([1,0,0])
+    bb = np.array([1,sqrt(3),0])
+
+    ttt = norm2(bb - aa)
+
+    cosineA = (B**2 + C**2 - A**2) / (2*B*C)
+    print("sqrt : " ,sqt)
+    print("test : " , cosineA)
+    #math.acos
+    
+    theta = math.acos(cosineA)
+    return theta
+
 
 def solves(A,B,C,x,y,z):
     #Calc Angles
@@ -119,11 +137,6 @@ def solves(A,B,C,x,y,z):
         Q = 2*B*z
         R = -2*A*B + 2*B*x*cos(phi_0) + 2*B*y*sin(phi_0)
 
-        #P = -A**2 + 2*A*D + 2*A*x*cos(phi_0) + 2*A*y*sin(phi_0)-B**2 + C**2 -D**2 -2*D*x*cos(phi_0) -2*D*y*sin(phi_0)-x**2 - y**2 - z**2
-        
-        #Q = -2*B*z
-        #R = -2*A*B + 2*B*D + 2*B*x*cos(phi_0) + 2*B*y*sin(phi_0)
-
         theta_0 = -2*atan((Q - sqrt(-P**2 + Q**2 + R**2))/(P-R))
         theta_1 = -2*atan((Q + sqrt(-P**2 + Q**2 + R**2))/(P-R))
 
@@ -136,8 +149,8 @@ def visualize(A,B,C,x,y,z):
     ax = plt.axes(projection="3d")
 
     thetas = solves(A,B,C,x,y,z)
-    #print("thetas")
-    #print(thetas)
+    print("thetas")
+    print(thetas)
     angles = np.array([np.pi * (2.0*(i)/2.0)*i for i in range(2)])
     unit_vectors = np.array([np.cos(angles), np.sin(angles), np.zeros(2)]).T
     ez = np.array([0,0,1])
@@ -153,6 +166,11 @@ def visualize(A,B,C,x,y,z):
 
 
     C_vectors = np.array([x,y,z])   
+
+    Theta1 = cos_formula(B,C,norm2(C_vectors[0] - A_vectors[0]))
+
+    print("angle test")
+    print(Thetal)
 
     index = np.arange(3) % 2
     #print(A_vectors)
@@ -180,22 +198,33 @@ def visualize(A,B,C,x,y,z):
         temp = [[Base[j], C_vectors[j]] for j in range(3)]
         ax.plot(temp[0],temp[1],temp[2],color='g')
 
-    ax.set_xlim([-3,3])
-    ax.set_ylim([-3,3])
-    ax.set_zlim([-5,1])    
+    ax.set_xlim([-2,2])
+    ax.set_ylim([-2,2])
+    ax.set_zlim([-2,1])    
     return fig
 
 
 
 if __name__ == "__main__":
     #symbol_calc()
+    b = 2.0
+    c = 1.0
+    
+    
+
+    # the = cos_formula(b,c)
+    # print("cos fomula")
+    # print (np.rad2deg(the))
+
     A = 0.5
     B = 1.0
-    C = 0.6
+    C = 0.8
 
-    x = 0.5
+    x = 0.1
     y = 0.0
     z = 1.3
+
+    
 
     fig = plt.figure("fig1")
     #ax = plt.axes(projection="3d")
