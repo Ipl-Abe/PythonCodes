@@ -17,6 +17,11 @@ def degtoRad(x):
 def norm2(x):
     return x[0]*x[0]+x[1]*x[1]+x[2]*x[2]
 
+def my_norm(x):
+    s = norm2(x)
+    return np.sqrt(s)
+
+
 def symbol_calc():
     angles = symbols("phi_0 phi_1 ")
     thetas = symbols("theta_0 theta_1")
@@ -56,7 +61,7 @@ def symbol_calc():
     #UU = C_vectors - B
     #print("test : ")
     #print(norm2((C_vectors-B_vectors[0])))
-    eq0 = C**2 - norm2((C_vectors-B_vectors[0]))
+    eq0 = C**2 - norm2((C_vectors - B_vectors[0]))
     
 
     print("DDebug")
@@ -98,18 +103,19 @@ def symbol_calc():
 # input two lengle of triangle
 # output angles between two lines
 def cos_formula(B,C,A):
-    sqt = math.sqrt(B**2 + C**2)
-    aa = np.array([1,0,0])
-    bb = np.array([1,sqrt(3),0])
+    #sqt = math.sqrt(B**2 + C**2)
+    #aa = np.array([1,0,0])
+    #bb = np.array([1,sqrt(3),0])
 
-    ttt = norm2(bb - aa)
+    #ttt = norm2(bb - aa)
 
     cosineA = (B**2 + C**2 - A**2) / (2*B*C)
-    print("sqrt : " ,sqt)
+    #print("sqrt : " ,sqt)
+    #cosineA = 1.0
     print("test : " , cosineA)
     #math.acos
-    
-    theta = math.acos(cosineA)
+
+    theta = np.arccos(cosineA)
     return theta
 
 
@@ -136,7 +142,7 @@ def solves(A,B,C,x,y,z):
         P = -A**2 + 2*A*x*cos(phi_0) + 2*A*y*sin(phi_0) + C**2 - x**2 - y**2 - z**2
         Q = 2*B*z
         R = -2*A*B + 2*B*x*cos(phi_0) + 2*B*y*sin(phi_0)
-
+        print ("P ",P," Q ", Q, " R ", R)
         theta_0 = -2*atan((Q - sqrt(-P**2 + Q**2 + R**2))/(P-R))
         theta_1 = -2*atan((Q + sqrt(-P**2 + Q**2 + R**2))/(P-R))
 
@@ -150,27 +156,32 @@ def visualize(A,B,C,x,y,z):
 
     thetas = solves(A,B,C,x,y,z)
     print("thetas")
-    print(thetas)
+    print(np.rad2deg(thetas))
     angles = np.array([np.pi * (2.0*(i)/2.0)*i for i in range(2)])
     unit_vectors = np.array([np.cos(angles), np.sin(angles), np.zeros(2)]).T
     ez = np.array([0,0,1])
 
     A_vectors = A * unit_vectors
-    #print("A_vectors")
-    #print(A_vectors)
+    print("A_vectors")
+    print(A_vectors)
     B_vectors = np.array([A_vectors[i] + 
                           B*(unit_vectors[i] * np.cos(thetas[i]) + ez* np.sin(thetas[i]) )for i in range(2)])
 
-    #print("B_vectors")
-    #print(B_vectors)
+    print("B_vectors")
+    print(B_vectors)
 
 
     C_vectors = np.array([x,y,z])   
 
-    Theta1 = cos_formula(B,C,norm2(C_vectors[0] - A_vectors[0]))
+    print(my_norm(C_vectors - A_vectors[0]))
 
+    Theta1 = cos_formula(B,C,my_norm(C_vectors - A_vectors[0]))
     print("angle test")
-    print(Thetal)
+    print(np.rad2deg(Theta1))
+
+    Theta2 = cos_formula(B,C,my_norm(C_vectors - A_vectors[1]))
+    print("angle test2")
+    print(np.rad2deg(Theta2))
 
     index = np.arange(3) % 2
     #print(A_vectors)
@@ -200,7 +211,7 @@ def visualize(A,B,C,x,y,z):
 
     ax.set_xlim([-2,2])
     ax.set_ylim([-2,2])
-    ax.set_zlim([-2,1])    
+    ax.set_zlim([-1,2])    
     return fig
 
 
@@ -222,7 +233,7 @@ if __name__ == "__main__":
 
     x = 0.1
     y = 0.0
-    z = 1.3
+    z = 1.0
 
     
 
