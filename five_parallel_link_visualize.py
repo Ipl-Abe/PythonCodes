@@ -217,7 +217,7 @@ def visualize(A,B,C,x,y,z):
 
 
 if __name__ == "__main__":
-    #symbol_calc()
+    symbol_calc()
     b = 2.0
     c = 1.0
     
@@ -228,10 +228,10 @@ if __name__ == "__main__":
     # print (np.rad2deg(the))
 
     A = 0.5
-    B = 1.0
-    C = 0.8
+    B = 0.8
+    C = 0.9
 
-    x = 0.1
+    x = 0.0
     y = 0.0
     z = 1.0
 
