@@ -94,11 +94,12 @@ def symbol_calc():
     c1 = L_vector * a_vector.T
     c2 = L_vector[0,0] * L_vector[0,0] + L_vector[0,1] * L_vector[0,1]
     c3 = c1[0,0]**2 - c2**2 + l**2
+    print("c3 : ")
     print(c3)
     #print(c1[1,0])
 
     C_vector = c1[0,0] + sqrt(c3)
-
+    print("c_vector : ")
     print(C_vector)
 
 
@@ -136,8 +137,8 @@ def solves(r,l,x,y,phi):
     L_vector1 =  np.array(S_vectors[0]*RMat) + P_vector
     L_vector2 =  np.array(S_vectors[1]*RMat) + P_vector
     L_vector = np.array([L_vector1[:,0],L_vector2[:,0]])
-    # print("L_vector")
-    # print(L_vector)
+    print("L_vector")
+    print(L_vector)
 
     a_vector = np.array([1,0])
     a_vector = a_vector[:,np.newaxis]
@@ -148,13 +149,13 @@ def solves(r,l,x,y,phi):
     c1 = L_vector * a_vector.T
     c2 = [L_vector[0,0] * L_vector[0,0] + L_vector[0,1] * L_vector[0,1],
           L_vector[1,0] * L_vector[1,0] + L_vector[1,1] * L_vector[1,1]]
-    c3 = [c1[0,0]**2 - c2[0] + l**2, c1[1,0]**2 - c2[1] + l**2 ]
-    # print("c1")
-    # print(c1)
-    # print("c2")
-    # print(c2)
-    # print("c3")
-    # print(c3)
+    c3 = [c1[0,0]**2 - c2[0] + l**2,   c1[1,0]**2 - c2[1] + l**2 ]
+    print("c1")
+    print(c1)
+    print("c2")
+    print(c2)
+    print("c3")
+    print(c3)
 
     
     
@@ -165,8 +166,8 @@ def solves(r,l,x,y,phi):
     #ass = 0.5/C_vector
     # print(ass)
     #ccc = atan(0.129333)
-    # print("C_vector")
-    # print(C_vector)
+    print("C_vector")
+    print(C_vector)
     # print("atan", ccc)
 
     return C_vector
@@ -210,12 +211,12 @@ def visualize(r,l,x,y,phi):
     print(Jaco.shape)
     print(omega.shape)
 
-    # 行列の積にはnp.dotを使用すると楽に計算できる
+    
     calc = np.dot(Jaco.T,omega)
 
     www = np.dot(Jaco,Jaco.T)
 
-    det = np.pinv(www)
+    #det = np.pinv(www)
     #det = LA.det(www)
     #det = np.linalg.det(www)
 
@@ -255,12 +256,12 @@ if __name__ == "__main__":
     r = 0.5
     l = 0.5
     x = 0.0
-    y = 0.2
-    phi = np.deg2rad(10)
+    y = 0.5
+    phi = np.deg2rad(0)
     #solves(r,l,x,y,phi)
     fig = visualize(r,l,x,y,phi)
 
-    #plt.show(fig)
+    plt.show(fig)
 
 
 
