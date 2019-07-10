@@ -85,8 +85,8 @@ def symbol_calc():
         P_vector + RMat * S_vectors[0].T ,
         P_vector + RMat * S_vectors[1].T
         ])   
-    # print("L_vector")
-    # print(L_vector[0])
+    print("L_vector")
+    print(L_vector)
 
     a_vector = np.array([1,0])
     a_vector = a_vector[:,np.newaxis]
@@ -102,6 +102,30 @@ def symbol_calc():
     C_vector = c1[0,0] + sqrt(c3)
     print("c_vector : ")
     print(C_vector)
+
+
+    a_vec = np.array([
+        1,0
+    ])
+
+    print("a_vec : ")
+    print(c1)
+
+    print(L_vector[0,0] -c1[0,0]*a_vec[0])
+
+    z_mat = np.array([
+        [(L_vector[0,0] -c1[0,0]*a_vec[0]) / l , (L_vector[0,1] -c1[0]*a_vec[1]) / l],
+        [(L_vector[1,0] -c1[1]*a_vec[0]) / l , (L_vector[1,1] -c1[1]*a_vec[1]) / l],
+    ])
+    #z_mat = np.array([(L_vector[0,:] -c1[0]*a_vec) / l , (L_vector[1,:] -c1[1]*a_vec) / l])
+
+
+    # シンボルに関しては途中までしか実装できていない。
+    
+
+    print("z_mat : ")
+    print(z_mat)
+
 
 
 def solves(r,l,x,y,phi):
@@ -399,10 +423,10 @@ def visualize(r,l,x,y,phi):
     return fig
 
 if __name__ == "__main__":
-    #symbol_calc() 
+    symbol_calc() 
     r = 0.5
     l = 0.5
-    x = 0.0
+    x = 20.0
     y = 0.3
     phi = np.deg2rad(0)
     #solves(r,l,x,y,phi)
