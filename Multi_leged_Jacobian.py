@@ -35,19 +35,19 @@ def symbol_calc():
 
 
 
-# 記号a, b, c, xを定義
+
     var('a b c x')
 
-# 関数f(x)を定義
+
     f = a*x**2 + b*x + c
 
-# f(x)をxで微分
+
     dfdx1 = diff(f, x)
 
-# f(x)をxで2階微分
+
     dfdx2 = diff(f, x, 2)
 
-# f(x)をxで3階微分
+
     dfdx3 = diff(f, x, 3)
 
     print("dfdx1 = {}".format(dfdx1))
