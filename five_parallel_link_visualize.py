@@ -210,8 +210,10 @@ def visualize(A,B,C,x,y,z):
         ax.plot(temp[0],temp[1],temp[2],color='g')
 
     ax.set_xlim([-2,2])
-    ax.set_ylim([-2,2])
+    #ax.set_ylim([-2,2])
     ax.set_zlim([-1,2])    
+
+    plt.show()
     return fig
 
 
@@ -227,7 +229,7 @@ if __name__ == "__main__":
     # print("cos fomula")
     # print (np.rad2deg(the))
 
-    A = 0.5
+    A = 0.1
     B = 0.8
     C = 1.0
 
@@ -265,7 +267,7 @@ if __name__ == "__main__":
     #ani.ArtistAnimation(fig, ims, interval = 100,blit=True)
     #ani = animation.ArtistAnimation(fig, ims, interval = 100,blit=True)
     #ani = animation.FuncAnimation(fig,ims,19,interval=40)
-    plt.show(fig)
+    #plt.show(fig)
     #ims.clear()
     print("Fin")
 

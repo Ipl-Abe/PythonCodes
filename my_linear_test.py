@@ -119,10 +119,6 @@ def symbol_calc():
     ])
     #z_mat = np.array([(L_vector[0,:] -c1[0]*a_vec) / l , (L_vector[1,:] -c1[1]*a_vec) / l])
 
-
-    # シンボルに関しては途中までしか実装できていない。
-    
-
     print("z_mat : ")
     print(z_mat)
 
@@ -364,7 +360,7 @@ def visualize(r,l,x,y,phi):
 
 #     www = np.sqrt(np.linalg.det(np.dot(J_ecmn,J_ecmn.T)))
 
-    print("可操作度")
+    print("manipulability")
     print(www)
 
 
@@ -423,13 +419,13 @@ def visualize(r,l,x,y,phi):
     return fig
 
 if __name__ == "__main__":
-    symbol_calc() 
+    # symbol_calc() 
     r = 0.5
     l = 0.5
     x = 20.0
     y = 0.3
     phi = np.deg2rad(0)
-    #solves(r,l,x,y,phi)
+    solves(r,l,x,y,phi)
     fig = visualize(r,l,x,y,phi)
 
     plt.show(fig)

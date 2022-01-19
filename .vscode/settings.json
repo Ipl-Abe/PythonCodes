@@ -57,5 +57,17 @@
         "condition_variable": "cpp",
         "iomanip": "cpp",
         "mutex": "cpp"
-    }
+    },
+    "python.autoComplete.extraPaths": [
+        "/opt/Algoryx/AgX-2.28.1.0/bin/agxpy",
+        "/opt/Algoryx/AgX-2.28.1.0/data/python/modules",
+        "/opt/Algoryx/AgX-2.28.1.0/bin/agxpy",
+        "/opt/Algoryx/AgX-2.28.1.0/data/python/modules",
+        "/home/rel/catkin_ws/devel/lib/python2.7/dist-packages",
+        "/opt/ros/melodic/lib/python2.7/dist-packages",
+        "/opt/Algoryx/AgX-2.28.1.0/bin/agxpy",
+        "/opt/Algoryx/AgX-2.28.1.0/data/python/modules",
+        "/opt/Algoryx/AgX-2.28.1.0/bin/agxpy",
+        "/opt/Algoryx/AgX-2.28.1.0/data/python/modules"
+    ]
 }

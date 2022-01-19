@@ -60,3 +60,4 @@ ax[0].set_title('P control - Bode Plot')
 bodeplot_set(ax, 'lower left')
 
 plt.show()
+
