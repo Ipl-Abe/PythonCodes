@@ -3,6 +3,7 @@ from scipy.integrate import odeint
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
+
 g = 9.8 # Gravitational acceleration [m/s^2]
 L = 10 # Distance between monkey and hunter[m]
 theta = np.pi/4 # Firing angle for bullet [rad]
